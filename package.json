@@ -1,0 +1,26 @@
+{
+  "name": "ti24-system",
+  "private": true,
+  "description": "TI24 Commercial & Operations System — web pública + CRM (monorepo)",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev:web": "pnpm --filter @ti24/web dev",
+    "dev:crm": "pnpm --filter @ti24/crm dev",
+    "build": "pnpm -r --filter ./apps/* build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "db:migrate": "node scripts/migrate.mjs",
+    "db:reset": "node scripts/migrate.mjs --reset --seed"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "^22.15.0",
+    "postgres": "^3.4.9",
+    "typescript": "5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
