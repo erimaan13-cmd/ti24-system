@@ -1,0 +1,15 @@
+{
+  "name": "@ti24/domain",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@ti24/contracts": "workspace:*"
+  }
+}
