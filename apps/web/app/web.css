@@ -1,0 +1,65 @@
+/* Estilos específicos del sitio público. Los tokens y componentes vienen de @ti24/ui. */
+main:focus { outline: none; }
+.site-header { border-bottom: 1px solid var(--line); background: var(--paper); position: sticky; top: 0; z-index: 10; }
+.site-header__inner { display: flex; align-items: center; gap: var(--s-4); min-height: 64px; }
+.site-nav { display: none; gap: var(--s-5); margin-left: auto; font-size: var(--fs-sm); }
+.site-nav a { text-decoration: none; color: var(--ink-2); padding: var(--s-2) 0; }
+.site-nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--amber); }
+.site-header .btn { margin-left: auto; }
+@media (min-width: 880px) { .site-nav { display: flex; } .site-header .btn { margin-left: 0; } }
+
+.section { padding-block: var(--s-8); }
+.section + .section { border-top: 1px solid var(--line); }
+.section-head { max-width: 720px; margin-bottom: var(--s-6); }
+.hero { padding-block: var(--s-8) var(--s-8); }
+@media (min-width: 720px) { .hero { padding-block: var(--s-9); } }
+.hero h1 { max-width: 16ch; margin-top: var(--s-4); }
+.hero .lead { font-size: var(--fs-lg); color: var(--ink-2); max-width: 60ch; margin-bottom: var(--s-6); }
+.lead { font-size: var(--fs-lg); color: var(--ink-2); max-width: 62ch; }
+
+.line-card { display: flex; flex-direction: column; gap: var(--s-2); height: 100%; }
+.line-card h3 { margin: 0; font-size: var(--fs-md); }
+.line-card p { margin: 0; color: var(--muted); font-size: var(--fs-sm); flex: 1; }
+.line-card a { font-size: var(--fs-sm); font-weight: 600; }
+.line-card .tag { align-self: flex-start; }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-4); }
+@media (min-width: 720px) { .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.steps li { border-top: 2px solid var(--ink); padding-top: var(--s-3); }
+.steps .n { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--amber-ink); font-weight: 600; }
+.steps h3 { font-size: var(--fs-md); margin: var(--s-2) 0; }
+.steps p { color: var(--muted); font-size: var(--fs-sm); margin: 0; }
+
+.checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-3); }
+.checklist li { display: grid; grid-template-columns: 20px 1fr; gap: var(--s-3); }
+.checklist li::before { content: ''; width: 10px; height: 10px; margin-top: 8px; border: 2px solid var(--ink); border-radius: 2px; }
+.checklist.no li::before { border-color: var(--subtle); background: linear-gradient(45deg, transparent 45%, var(--subtle) 45%, var(--subtle) 55%, transparent 55%); }
+
+.faq details { border-bottom: 1px solid var(--line); padding: var(--s-4) 0; }
+.faq summary { cursor: pointer; font-weight: 600; min-height: var(--touch); display: flex; align-items: center; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; margin-left: auto; font-family: var(--font-mono); color: var(--muted); }
+.faq details[open] summary::after { content: '–'; }
+.faq p { color: var(--ink-2); margin: var(--s-2) 0 0; max-width: 70ch; }
+
+.cta-band { background: var(--ink); color: var(--paper); border-radius: var(--radius); padding: var(--s-7) var(--s-5); }
+.cta-band h2 { color: var(--paper); }
+.cta-band p { color: #cfccc4; max-width: 56ch; }
+.cta-band .btn-primary { background: var(--paper); color: var(--ink); }
+.cta-band .btn-secondary { color: var(--paper); border-color: #5e5b55; }
+.cta-band :focus-visible { outline-color: var(--paper); }
+
+.form-grid { display: grid; gap: var(--s-4); }
+@media (min-width: 720px) { .form-grid-2 { grid-template-columns: 1fr 1fr; } }
+.hp { position: absolute !important; left: -10000px !important; width: 1px; height: 1px; overflow: hidden; }
+.two-col { display: grid; gap: var(--s-7); }
+@media (min-width: 960px) { .two-col { grid-template-columns: 5fr 7fr; align-items: start; } }
+
+.prose { max-width: 72ch; }
+.prose h2 { font-size: var(--fs-lg); margin-top: var(--s-6); }
+.prose li { margin-bottom: var(--s-2); }
+.pending { background: var(--amber-wash); border-bottom: 2px solid var(--amber); padding: 0 4px; font-family: var(--font-mono); font-size: 0.9em; }
+
+.site-footer { border-top: 1px solid var(--line); padding-block: var(--s-6); margin-top: var(--s-8); }
+.site-footer__inner { display: flex; flex-wrap: wrap; gap: var(--s-5); justify-content: space-between; align-items: flex-end; }
+.site-footer nav a { min-height: var(--touch); display: inline-flex; align-items: center; }
