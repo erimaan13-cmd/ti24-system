@@ -1,0 +1,44 @@
+# CI del P0: tipos, pruebas de dominio + base de datos real, build de ambas apps y E2E.
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/ti24_test
+      E2E_DATABASE_URL: postgres://postgres:postgres@localhost:5432/ti24_e2e
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/ti24_e2e
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - name: Crear bases de prueba
+        run: |
+          PGPASSWORD=postgres psql -h localhost -U postgres -c 'create database ti24_test'
+          PGPASSWORD=postgres psql -h localhost -U postgres -c 'create database ti24_e2e'
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evidencia-e2e
+          path: |
+            playwright-report/
+            docs/evidencia/
