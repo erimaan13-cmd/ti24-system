@@ -8,14 +8,13 @@ Esta sesión no tuvo acceso de escritura a `ErickInfante03/ti24-system` (GitHub 
 
 1. En VS Code: **File → Open Folder** (abrir carpeta) → la carpeta `ti24-system`.
    *Por qué:* VS Code ya trae git y el botón para publicar.
-2. Panel **Source Control** (control de código) → rama `feat/p0-vertical-slice` → **Publish Branch** (publicar rama).
-   Si el repositorio remoto ya existe vacío, en la terminal de VS Code:
+2. El remoto `origin` ya apunta a `https://github.com/ErickInfante03/ti24-system.git`. En la terminal de VS Code (**Terminal → New Terminal**):
    ```bash
-   git remote add origin https://github.com/ErickInfante03/ti24-system.git
    git push -u origin main
    git push -u origin feat/p0-vertical-slice
    ```
    *Por qué:* `main` queda como base y la rama del P0 se revisa como PR.
+   Si el primer comando responde `rejected ... (fetch first)` (rechazado: el repositorio de GitHub ya tiene archivos, p. ej. un README), detente y mándame el mensaje literal; no uses `--force`.
 3. En GitHub: **Compare & pull request** → pega el texto de `docs/PR.md`. **No hagas merge** hasta que Abraham revise.
 
 ## 1. Supabase (plan gratuito)
